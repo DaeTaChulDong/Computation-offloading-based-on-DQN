@@ -37,6 +37,9 @@ We performed three distinct experiments to improve the agent's learning efficien
     * **Initial Phase:** High failure rate (Reward -1.0) due to random exploration.
     * **Learning Phase:** Significant performance jumps observed every 1000 steps.
     * **Conclusion:** The agent successfully learns to avoid timeouts and maximize rewards given sufficient training time.
+ 
+      <img width="1706" height="856" alt="Figure_1" src="https://github.com/user-attachments/assets/dcc1a183-1c1d-45ff-a3f5-6e7b37327cf2" />
+
 
 ### Experiment 2: Neural Network Capacity Expansion
 **Objective:** Enhance the model's ability to represent complex environmental features by deepening and widening the network.
@@ -48,6 +51,9 @@ We performed three distinct experiments to improve the agent's learning efficien
     * **Initial Phase:** Higher failure rate compared to Exp 1. The increased number of parameters required more time to tune from random initialization.
     * **Final Phase:** Achieved **higher success rates and precision** after convergence.
     * **Conclusion:** A larger capacity allows the agent to capture finer details of the environment, leading to better long-term performance despite a slower start.
+ 
+      <img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/3e064fe4-9d8f-4972-a254-7f7a30b3b751" />
+
 
 ### Experiment 3: Dueling DQN Architecture
 **Objective:** Accelerate convergence and improve stability by decoupling state value and action advantage.
@@ -62,6 +68,9 @@ We performed three distinct experiments to improve the agent's learning efficien
     * **Fast Convergence:** The agent quickly identified valuable states without needing to explore all actions.
     * **Robustness:** Maintained high rewards (near 1.0) with minimal fluctuation after convergence.
     * **Conclusion:** Dueling DQN significantly outperformed the standard DQN in learning speed and stability by isolating state values from action choices.
+
+<img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/5c4f63fe-ece7-479d-b92e-3492334a9d2e" />
+
 
 ---
 
