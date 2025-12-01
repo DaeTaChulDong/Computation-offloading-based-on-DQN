@@ -86,6 +86,10 @@ Experimental results confirm that the DQN agent significantly outperforms the tr
     * **Conclusion:** Dueling DQN significantly outperformed the standard DQN in learning speed and stability by isolating state values from action choices.
 
 <img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/5c4f63fe-ece7-479d-b92e-3492334a9d2e" />
+<img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/9edd37a5-e6ea-42c5-a995-5127fd5d980a" />
+<img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/e8fa4abb-2607-43d2-ae74-c49b2ad49000" />
+<img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/f129ad12-c360-4570-9160-b3d42ac845b7" />
+<img width="640" height="480" alt="Figure_4" src="https://github.com/user-attachments/assets/df8ac36d-95e7-4c3c-b96e-828fe188d68f" />
 
 
 ---
