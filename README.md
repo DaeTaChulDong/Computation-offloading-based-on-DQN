@@ -14,7 +14,8 @@ In MEC environments, mobile devices must decide whether to process tasks locally
 
 ## 📂 File Structure
 
-* `main.py`: Main execution file for training the agent.
+* `run_dqn.py`: **Main experiment file.** Compares the performance of DQN and Q-Learning over cumulative episodes and generates comparative graphs.
+* `main.py`: **Single execution file.** Used for testing individual episodes or verifying code functionality without the comparative overhead.
 * `dqn.py`: Implementation of the DQN Agent and Neural Network architecture.
 * `env.py`: Definition of the MEC environment (State, Action, Reward, State Transition).
 * `constants.py`: System parameters (CPU frequency, Bandwidth, etc.).
@@ -26,7 +27,9 @@ In MEC environments, mobile devices must decide whether to process tasks locally
 
 We performed three distinct experiments to improve the agent's learning efficiency and final performance.
 
-### Base Code
+### Base Code Performance (Initial Check)
+Before optimization, we evaluated the base code with a limited number of episodes (400).
+* **Observation:** The failure rate (Reward -1) was dominant due to insufficient training. The agent struggled to find a successful offloading strategy within the limited timeframe.
 <img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/b577fa65-6511-4c36-953f-3e7592382cf1" />
 <img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/7482b679-8ca5-43d7-81a3-90bda02e0130" />
 <img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/ec8f104d-c22e-441f-a0c5-02421ad64689" />
@@ -44,8 +47,7 @@ Experimental results confirm that the DQN agent significantly outperforms the tr
 * **Results:**
     * **Initial Phase:** High failure rate (Reward -1.0) due to random exploration.
     * **Learning Phase:** Significant performance jumps observed every 1000 steps.
-    * **Conclusion:** The agent successfully learns to avoid timeouts and maximize rewards given sufficient training time.
- 
+    * **Conclusion:** The agent successfully learns to avoid timeouts and maximize rewards given sufficient training time. 
       <img width="1706" height="856" alt="Figure_1" src="https://github.com/user-attachments/assets/dcc1a183-1c1d-45ff-a3f5-6e7b37327cf2" />
 <img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/d2706942-5cf9-4904-a2b1-4472fbfdc204" />
 <img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/01f1becd-8ec9-4da5-a3d8-8f05c54993e8" />
@@ -60,10 +62,9 @@ Experimental results confirm that the DQN agent significantly outperforms the tr
     * **Wider Layers:** Increased nodes from 50/30 to **128/128/64**.
     * **Deeper Network:** Increased hidden layers from 2 to **3**.
 * **Results:**
-    * **Initial Phase:** Higher failure rate compared to Exp 1. The increased number of parameters required more time to tune from random initialization.
-    * **Final Phase:** Achieved **higher success rates and precision** after convergence.
-    * **Conclusion:** A larger capacity allows the agent to capture finer details of the environment, leading to better long-term performance despite a slower start.
- 
+    * **Initial Phase:** Higher failure rate compared to Exp 1. The increased number of parameters required more time to tune from random initialization (The Dip).
+    * **Final Phase:** Achieved **higher success rates and precision** after convergence (around episode 5000).
+    * **Conclusion:** A larger capacity allows the agent to capture finer details of the environment, leading to better long-term performance despite a slower start. 
       <img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/3e064fe4-9d8f-4972-a254-7f7a30b3b751" />
 <img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/4a0805e1-b5fb-4f38-a669-b9a379a0c34c" />
 <img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/6e001752-1fb0-4bc9-a713-c09fdc559b9f" />
@@ -81,8 +82,8 @@ Experimental results confirm that the DQN agent significantly outperforms the tr
         2.  **Advantage Stream $A(s,a)$:** Estimates the relative importance of each action.
     * **Aggregation:** $Q(s,a) = V(s) + (A(s,a) - Mean(A(s,a)))$
 * **Results:**
-    * **Fast Convergence:** The agent quickly identified valuable states without needing to explore all actions.
-    * **Robustness:** Maintained high rewards (near 1.0) with minimal fluctuation after convergence.
+    * **Fast Convergence:** The agent quickly escaped the initial low-reward phase, showing a steep learning curve around episode 1,000.
+    * **Robustness:** Achieved the highest and most stable rewards (near 1.0) with minimal fluctuation after convergence.
     * **Conclusion:** Dueling DQN significantly outperformed the standard DQN in learning speed and stability by isolating state values from action choices.
 
 <img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/5c4f63fe-ece7-479d-b92e-3492334a9d2e" />
@@ -122,9 +123,14 @@ Experimental results confirm that the DQN agent significantly outperforms the tr
     ```
 
 3.  **Run the simulation**
-    ```bash
-    python main.py
-    ```
+    * For a **comparative study** (DQN vs Q-Learning over 30,000 episodes):
+      ```bash
+      python run_dqn.py
+      ```
+    * For a **single execution test** (Quick check):
+      ```bash
+      python main.py
+      ```
 
 ## 📚 References
 
