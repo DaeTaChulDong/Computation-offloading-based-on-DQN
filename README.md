@@ -26,6 +26,14 @@ In MEC environments, mobile devices must decide whether to process tasks locally
 
 We performed three distinct experiments to improve the agent's learning efficiency and final performance.
 
+### Base Code
+<img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/b577fa65-6511-4c36-953f-3e7592382cf1" />
+<img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/7482b679-8ca5-43d7-81a3-90bda02e0130" />
+<img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/ec8f104d-c22e-441f-a0c5-02421ad64689" />
+<img width="640" height="480" alt="Figure_4" src="https://github.com/user-attachments/assets/958891a4-1bf6-45a2-b71b-70a12790ad9a" />
+
+Experimental results confirm that the DQN agent significantly outperforms the traditional Q-Learning baseline. Specifically, DQN achieved shorter task processing latency and maximized cumulative rewards.
+
 ### Experiment 1: Baseline & Episode Expansion
 **Objective:** Verify the basic learning capability of the base code and observe long-term convergence.
 
