@@ -47,6 +47,10 @@ Experimental results confirm that the DQN agent significantly outperforms the tr
     * **Conclusion:** The agent successfully learns to avoid timeouts and maximize rewards given sufficient training time.
  
       <img width="1706" height="856" alt="Figure_1" src="https://github.com/user-attachments/assets/dcc1a183-1c1d-45ff-a3f5-6e7b37327cf2" />
+<img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/d2706942-5cf9-4904-a2b1-4472fbfdc204" />
+<img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/01f1becd-8ec9-4da5-a3d8-8f05c54993e8" />
+<img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/ad2802dd-98c7-4902-a660-12afcfe1dabb" />
+<img width="640" height="480" alt="Figure_4" src="https://github.com/user-attachments/assets/d8df82e3-51b3-4e93-95ad-04f0fd01a324" />
 
 
 ### Experiment 2: Neural Network Capacity Expansion
