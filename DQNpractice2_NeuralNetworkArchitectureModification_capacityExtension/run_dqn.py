@@ -9,8 +9,8 @@ import operator
 import matplotlib.pyplot as plt
 from tensorboardX import SummaryWriter
 from random import choice
-from TD3 import TD3
-from utils import ReplayBuffer
+# from TD3 import TD3
+# from utils import ReplayBuffer
 from Q_table import QLearningTable
 from func import trans
 ACTIONS = []
@@ -219,21 +219,21 @@ plt.figure()
 plt.plot(e[10:],Time[10:],'b', label='DQN')
 plt.plot(e[10:],rl_Time[10:],'r', label='Q-learning')
 plt.legend()
-plt.title("时延（舍弃10个点）")
+plt.title("Time Delay（exclude first 10）")
 plt.show()
 
 plt.figure()
 plt.plot(e[10:],r[10:],'b', label='DQN')
 plt.plot(e[10:],rl_r[10:],'r', label='Q-learning')
 plt.legend()
-plt.title("reward（舍弃10个点）")
+plt.title("reward（exclude first 10）")
 plt.show()
 
 plt.figure()
 plt.plot(e,Time,'b', label='DQN')
 plt.plot(e,rl_Time,'r', label='Q-learning')
 plt.legend()
-plt.title("时延")
+plt.title("Time delay")
 plt.show()
 
 plt.figure()
