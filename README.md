@@ -65,6 +65,10 @@ Experimental results confirm that the DQN agent significantly outperforms the tr
     * **Conclusion:** A larger capacity allows the agent to capture finer details of the environment, leading to better long-term performance despite a slower start.
  
       <img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/3e064fe4-9d8f-4972-a254-7f7a30b3b751" />
+<img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/4a0805e1-b5fb-4f38-a669-b9a379a0c34c" />
+<img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/6e001752-1fb0-4bc9-a713-c09fdc559b9f" />
+<img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/39a61975-20eb-458d-99b6-4bd91110edad" />
+<img width="640" height="480" alt="Figure_4" src="https://github.com/user-attachments/assets/222109de-ff84-4f0f-a104-1aa39c39cee3" />
 
 
 ### Experiment 3: Dueling DQN Architecture
