@@ -1,4 +1,5 @@
 변경점
-1. main.py->각 순간의 reward 보는 표
+1. main.py->각 순간의 reward 보는 표(Single Execution)
 2. 에피소드 실험 개수 400->4000개로 변경(그래프 x축도 변경)
 누적 그래프로 보려면 Base Code처럼 run_dqn.py로 보기
+
