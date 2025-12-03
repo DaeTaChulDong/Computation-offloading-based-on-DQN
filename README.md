@@ -28,7 +28,7 @@ In MEC environments, mobile devices must decide whether to process tasks locally
 We performed three distinct experiments to improve the agent's learning efficiency and final performance.
 
 ### Base Code Performance (Initial Check)
-Before optimization, we evaluated the base code with a limited number of episodes (400).
+Before optimization, we evaluated the base code with a limited number of episodes (400<-main.py).
 * **Observation:** The failure rate (Reward -1) was dominant due to insufficient training. The agent struggled to find a successful offloading strategy within the limited timeframe.
 <img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/b577fa65-6511-4c36-953f-3e7592382cf1" />
 <img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/7482b679-8ca5-43d7-81a3-90bda02e0130" />
