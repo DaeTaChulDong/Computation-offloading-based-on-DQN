@@ -159,5 +159,3 @@ This project compares a Baseline approach with a Proposed method benchmarked aga
 
 **[2] Proposed Methodology Benchmark (Generative Offloading)**
 > **A. Ghosh, N. Sharma, S. Mishra, R. Misra, and S. K. Das**, "MGCO: Mobility-Aware Generative Computation Offloading in Edge-Cloud Systems," *IEEE Transactions on Services Computing*, 2025.
-
-```
