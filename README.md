@@ -143,9 +143,9 @@ The Transformer model significantly outperformed the LSTM baseline in minimizing
 
 Using the Precision Bonus metric, we observed a clear divergence in performance:
 
-* **Scenario A (Gray):** **Lowest Performance.** Without prediction, the agent failed to anticipate connection drops at the edge of coverage, leading to a downward spiral of penalties.
-* **Scenario B (Blue):** **Moderate Performance.** LSTM provided decent stability but lacked the precision to maximize the bonus rewards.
-* **Scenario C (Red):** **Highest Performance.** The Transformer's high-precision predictions allowed the agent to maximize rewards by maintaining connections only when reliability was guaranteed. The final cumulative score was approximately **15% higher** than Scenario B.
+* **Scenario A - No Prediction(Gray):** **Lowest Performance.** Without prediction, the agent failed to anticipate connection drops at the edge of coverage, leading to a downward spiral of penalties.
+* **Scenario B - LSTM(Blue):** **Moderate Performance.** LSTM provided decent stability but lacked the precision to maximize the bonus rewards.
+* **Scenario C - Transformer(Red):** **Highest Performance.** The Transformer's high-precision predictions allowed the agent to maximize rewards by maintaining connections only when reliability was guaranteed. The final cumulative score was approximately **15% higher** than Scenario B.
 <img width="1024" height="532" alt="good" src="https://github.com/user-attachments/assets/20cbaa6b-8273-4f10-b391-1abd824b3684" />
 
 ---
