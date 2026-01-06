@@ -36,8 +36,8 @@ We evaluate the offloading decision-making process under three conditions:
 
 ### Prerequisites
 
-* **SUMO (Simulation of Urban MObility):** Version 1.20.0 or higher.
-* **Python 3.8+:** Required libraries include `torch`, `pandas`, `numpy`, `traci`.
+* **SUMO (Simulation of Urban MObility)
+* **Python :** Required libraries include `torch`, `pandas`, `numpy`, `traci`.
 
 ### Map & Traffic Generation
 
