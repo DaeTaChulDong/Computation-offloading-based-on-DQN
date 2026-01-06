@@ -1,138 +1,147 @@
-# Computation Offloading Optimization in MEC based on DQN
+제공해주신 실험 설계, 변경 이력, 그리고 최종 결과를 종합하여 **GitHub `README.md**` 형식으로 작성해 드립니다.
 
-This repository is a fork of [WangYichi1/Computation-offloading-based-on-DQN](https://github.com/WangYichi1/Computation-offloading-based-on-DQN). 
-
-It focuses on optimizing **Task Offloading** in Mobile Edge Computing (MEC) environments using **Deep Reinforcement Learning (DRL)**. We conducted three progressive experiments to analyze performance changes based on episode length, neural network capacity, and algorithm architecture (Dueling DQN).
-
-## 📌 Project Overview
-
-In MEC environments, mobile devices must decide whether to process tasks locally or offload them to edge servers to minimize delay and energy consumption. This project implements a **Deep Q-Network (DQN)** agent to learn the optimal offloading policy in a dynamic environment.
-
-* **Goal:** Minimize task processing delay (maximize reward).
-* **Environment:** Dynamic wireless channels, varying task sizes, and multiple MEC servers.
-* **Agent:** DQN Agent (epsilon-greedy policy).
-
-## 📂 File Structure
-
-* `run_dqn.py`: **Main experiment file.** Compares the performance of DQN and Q-Learning over cumulative episodes and generates comparative graphs.
-* `main.py`: **Single execution file.** Used for testing individual episodes or verifying code functionality without the comparative overhead.
-* `dqn.py`: Implementation of the DQN Agent and Neural Network architecture.
-* `env.py`: Definition of the MEC environment (State, Action, Reward, State Transition).
-* `constants.py`: System parameters (CPU frequency, Bandwidth, etc.).
-* `func.py`: Helper functions for action space mapping.
+이전에 요청하신 대로 **영어(English)**로 작성하였으며, 연구의 흐름(단순 예측 → 강화학습 결합 → 환경 고도화 → 검증 방식 개선)이 논리적으로 드러나도록 구성했습니다.
 
 ---
 
-## 🧪 Experiments & Results
+# Mobility-Aware Computation Offloading in Vehicular Networks using Transformer and DRL
 
-We performed three distinct experiments to improve the agent's learning efficiency and final performance.
+This project implements a **Mobility-Aware Computation Offloading System** for vehicular edge computing (VEC) environments. It proposes a **Transformer-based mobility prediction model** integrated with a Deep Reinforcement Learning (DRL) agent to optimize task offloading decisions. The system is benchmarked against a traditional LSTM-based approach in a complex urban simulation.
 
-### Base Code Performance (Initial Check)
-Before optimization, we evaluated the base code with a limited number of episodes (400<-main.py).
-* **Observation:** The failure rate (Reward -1) was dominant due to insufficient training. The agent struggled to find a successful offloading strategy within the limited timeframe.
-<img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/b577fa65-6511-4c36-953f-3e7592382cf1" />
-<img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/7482b679-8ca5-43d7-81a3-90bda02e0130" />
-<img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/ec8f104d-c22e-441f-a0c5-02421ad64689" />
-<img width="640" height="480" alt="Figure_4" src="https://github.com/user-attachments/assets/958891a4-1bf6-45a2-b71b-70a12790ad9a" />
+## 📌 Overview
 
-Experimental results confirm that the DQN agent significantly outperforms the traditional Q-Learning baseline. Specifically, DQN achieved shorter task processing latency and maximized cumulative rewards.
+Efficient computation offloading in vehicular networks relies heavily on accurate mobility prediction to prevent connection drops during task execution. This project:
 
-### Experiment 1: Baseline & Episode Expansion
-**Objective:** Verify the basic learning capability of the base code and observe long-term convergence.
-
-* **Settings:**
-    * Used the original network structure (Input → 50 → 30 → Output).
-    * Increased training episodes from **400 to over 2000**.
-    * `dqn.learn()` is triggered every 1000 steps.
-* **Results:**
-    * **Initial Phase:** High failure rate (Reward -1.0) due to random exploration.
-    * **Learning Phase:** Significant performance jumps observed every 1000 steps.
-    * **Conclusion:** The agent successfully learns to avoid timeouts and maximize rewards given sufficient training time. 
-      <img width="1706" height="856" alt="Figure_1" src="https://github.com/user-attachments/assets/dcc1a183-1c1d-45ff-a3f5-6e7b37327cf2" />
-<img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/d2706942-5cf9-4904-a2b1-4472fbfdc204" />
-<img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/01f1becd-8ec9-4da5-a3d8-8f05c54993e8" />
-<img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/ad2802dd-98c7-4902-a660-12afcfe1dabb" />
-<img width="640" height="480" alt="Figure_4" src="https://github.com/user-attachments/assets/d8df82e3-51b3-4e93-95ad-04f0fd01a324" />
-
-
-### Experiment 2: Neural Network Capacity Expansion
-**Objective:** Enhance the model's ability to represent complex environmental features by deepening and widening the network.
-
-* **Modifications:**
-    * **Wider Layers:** Increased nodes from 50/30 to **128/128/64**.
-    * **Deeper Network:** Increased hidden layers from 2 to **3**.
-* **Results:**
-    * **Initial Phase:** Higher failure rate compared to Exp 1. The increased number of parameters required more time to tune from random initialization (The Dip).
-    * **Final Phase:** Achieved **higher success rates and precision** after convergence (around episode 5000).
-    * **Conclusion:** A larger capacity allows the agent to capture finer details of the environment, leading to better long-term performance despite a slower start. 
-      <img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/3e064fe4-9d8f-4972-a254-7f7a30b3b751" />
-<img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/4a0805e1-b5fb-4f38-a669-b9a379a0c34c" />
-<img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/6e001752-1fb0-4bc9-a713-c09fdc559b9f" />
-<img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/39a61975-20eb-458d-99b6-4bd91110edad" />
-<img width="640" height="480" alt="Figure_4" src="https://github.com/user-attachments/assets/222109de-ff84-4f0f-a104-1aa39c39cee3" />
-
-
-### Experiment 3: Dueling DQN Architecture
-**Objective:** Accelerate convergence and improve stability by decoupling state value and action advantage.
-
-* **Modifications:**
-    * Implemented **Dueling Network Architecture** (Wang et al., 2016).
-    * Split the final layer into two streams:
-        1.  **Value Stream $V(s)$:** Estimates how good the current state is.
-        2.  **Advantage Stream $A(s,a)$:** Estimates the relative importance of each action.
-    * **Aggregation:** $Q(s,a) = V(s) + (A(s,a) - Mean(A(s,a)))$
-* **Results:**
-    * **Fast Convergence:** The agent quickly escaped the initial low-reward phase, showing a steep learning curve around episode 1,000.
-    * **Robustness:** Achieved the highest and most stable rewards (near 1.0) with minimal fluctuation after convergence.
-    * **Conclusion:** Dueling DQN significantly outperformed the standard DQN in learning speed and stability by isolating state values from action choices.
-
-<img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/5c4f63fe-ece7-479d-b92e-3492334a9d2e" />
-<img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/9edd37a5-e6ea-42c5-a995-5127fd5d980a" />
-<img width="640" height="480" alt="Figure_2" src="https://github.com/user-attachments/assets/e8fa4abb-2607-43d2-ae74-c49b2ad49000" />
-<img width="640" height="480" alt="Figure_3" src="https://github.com/user-attachments/assets/f129ad12-c360-4570-9160-b3d42ac845b7" />
-<img width="640" height="480" alt="Figure_4" src="https://github.com/user-attachments/assets/df8ac36d-95e7-4c3c-b96e-828fe188d68f" />
-
+1. **Compares** two mobility prediction models: **Baseline (LSTM)** vs. **Proposed (Transformer)**.
+2. **Evaluates** offloading performance under three scenarios using a PPO agent and a Rule-Based verifier.
+3. **Demonstrates** the superiority of the Transformer approach in complex environments (Manhattan grid) using a **Deep Feature Fusion** mechanism.
 
 ---
 
-## ⚙️ System Model
+## 🛠️ Experimental Design
 
-### MDP Formulation
-* **State ($S$):** 6-dimensional vector including Task Size, CPU States of 3 MEC servers, and Channel Gains.
-* **Action ($A$):** 66 discrete actions representing a combination of:
-    1.  Offloading Ratio (0.0 ~ 1.0)
-    2.  Target Server Selection (MEC 1, 2, 3)
-    3.  Transmission Power / Channel Selection
-* **Reward ($R$):** Based on total delay ($t$).
-    * If $t > \text{deadline}$: Reward = -1 (Failure).
-    * Else: Reward = $e^{-10t}$ (Higher reward for faster processing).
+### 1. Mobility Prediction Models
+
+We predict the future trajectory of vehicles based on historical data.
+
+* **Baseline (LSTM):** Recurrent Neural Network architecture standard in existing surveys.
+* **Proposed (Transformer):** Self-Attention based architecture optimized for long-term time-series dependencies.
+* **Input/Output:** Past 30s trajectory  Future 15s prediction.
+
+### 2. Offloading Scenarios
+
+We evaluate the offloading decision-making process under three conditions:
+
+* **Scenario A (No Prediction):** Decisions are based solely on the current state (Distance, Speed).
+* **Scenario B (with LSTM):** Decisions utilize future information predicted by the LSTM model.
+* **Scenario C (with Transformer):** Decisions utilize future information predicted by the Transformer model.
 
 ---
 
-## 🚀 How to Run
+## ⚙️ Environment Setup
 
-1.  **Clone the repository**
-    ```bash
-    git clone [https://github.com/DaeTaChulDong/Computation-offloading-based-on-DQN.git](https://github.com/DaeTaChulDong/Computation-offloading-based-on-DQN.git)
-    cd Computation-offloading-based-on-DQN
-    ```
+### Prerequisites
 
-2.  **Install dependencies**
-    ```bash
-    pip install torch numpy matplotlib gym
-    ```
+* **SUMO (Simulation of Urban MObility):** Version 1.20.0 or higher.
+* **Python 3.8+:** Required libraries include `torch`, `pandas`, `numpy`, `traci`.
 
-3.  **Run the simulation**
-    * For a **comparative study** (DQN vs Q-Learning over 30,000 episodes):
-      ```bash
-      python run_dqn.py
-      ```
-    * For a **single execution test** (Quick check):
-      ```bash
-      python main.py
-      ```
+### Map & Traffic Generation
+
+* **Tool:** OSM Web Wizard (`tools/osmWebWizard.py`).
+* **Location:** **Manhattan, NY** (Changed from Sinchon for higher complexity).
+* **Traffic:** Dense traffic flow with frequent intersections to simulate realistic urban mobility.
+<img width="639" height="378" alt="02 Manhattan" src="https://github.com/user-attachments/assets/40cffc53-2fe2-45f6-991b-93e3b1002d8c" />
+
+---
+
+## 🚀 Usage Guide
+
+### 1. Data Collection
+
+Runs the SUMO simulation to generate the trajectory dataset.
+
+```bash
+python data_collector.py
+
+```
+
+* **Operation:** Simulates 3600 steps (1 hour). Records vehicle `(x, y)` coordinates and speed every second.
+* **Output:** `mobility_dataset.csv`
+
+### 2. Model Training
+
+Trains both the LSTM and Transformer models using the collected dataset.
+
+```bash
+python train_fusion_models.py
+
+```
+
+* **Feature:** Implements **Deep Feature Fusion**, where models output both coordinate predictions and a 64-dim hidden state vector.
+
+### 3. Performance Verification
+
+Evaluates the offloading performance using a precision-based reward system.
+
+```bash
+python model_verify_performance.py
+
+```
+
+---
+
+## 🔄 Methodology Evolution (History of Experiments)
+
+To achieve robust results, the experimental methodology was iteratively refined through the following stages:
+
+1. **Data Normalization:** Addressed the issue of large coordinate values (0~1000) preventing model convergence by applying normalization scaling (`1/1000`).
+2. **Reward Shaping:** Solved the **Local Optima** problem where the agent refused to offload due to high failure penalties. Adjusted rewards (Success +20, Local -1) to encourage active offloading.
+3. **Long-term Prediction (Hard Mode):** Extended the prediction window from 5s to **15s** to clearly differentiate the long-term dependency learning capabilities of LSTM and Transformer.
+4. **MGCO Benchmarking (Feature Fusion):** Adopted the "Generative Offloading" concept. The Transformer now passes a **Context Vector (Hidden State)** to the agent, sharing uncertainty and environmental context.
+5. **High Complexity & Penalty:**
+* **Map:** Switched to **Manhattan** to introduce complex turns.
+* **Penalty:** Increased failure penalty to **-100**, creating a "high-risk" environment where inaccurate predictions lead to severe score drops.
+
+
+6. **Precision Bonus Verification:** Instead of waiting for full PPO convergence, we implemented a **Precision Bonus** metric (up to +50 points) to directly quantify how prediction accuracy translates to Quality of Service (QoS).
+
+---
+
+## 📈 Experimental Results
+
+### 1. Mobility Prediction Accuracy
+
+The Transformer model significantly outperformed the LSTM baseline in minimizing prediction error (MSE).
+
+| Model | Final Loss (Epoch 30) | Improvement |
+| --- | --- | --- |
+| **Baseline (LSTM)** | 17,362.52 | - |
+| **Proposed (Transformer)** | **1,432.27** | **~12x Lower Error** |
+<img width="400" height="128" alt="Terminal_LSTM_predictor" src="https://github.com/user-attachments/assets/99efa9c0-2ed7-43e7-bc4d-ef046899f61a" />
+<img width="435" height="127" alt="Terminal_Transformer_predictor" src="https://github.com/user-attachments/assets/5a19d8f7-d5ad-4fe7-8242-98dea0ee33ea" />
+
+**Analysis:** The Self-Attention mechanism of the Transformer successfully captured the complex maneuvering patterns of vehicles in the Manhattan grid, whereas LSTM struggled with the high variance.
+
+### 2. Offloading Performance (Cumulative Reward)
+
+Using the Precision Bonus metric, we observed a clear divergence in performance:
+
+* **Scenario A (Gray):** **Lowest Performance.** Without prediction, the agent failed to anticipate connection drops at the edge of coverage, leading to a downward spiral of penalties.
+* **Scenario B (Blue):** **Moderate Performance.** LSTM provided decent stability but lacked the precision to maximize the bonus rewards.
+* **Scenario C (Red):** **Highest Performance.** The Transformer's high-precision predictions allowed the agent to maximize rewards by maintaining connections only when reliability was guaranteed. The final cumulative score was approximately **15% higher** than Scenario B.
+<img width="1024" height="532" alt="good" src="https://github.com/user-attachments/assets/20cbaa6b-8273-4f10-b391-1abd824b3684" />
+
+---
 
 ## 📚 References
 
-* **Original Repository:** [WangYichi1/Computation-offloading-based-on-DQN](https://github.com/WangYichi1/Computation-offloading-based-on-DQN)
-* **Paper:** Z. Wang et al., "Dueling Network Architectures for Deep Reinforcement Learning," ICML, 2016.
+This project is inspired by and benchmarks the following key studies:
+
+1. **Baseline System Design:**
+* **Paper:** *Mobility-Aware Edge Caching and Computing in Vehicle Networks: A Deep Reinforcement Learning Approach*.
+* **Usage:** Reference for the initial DRL environment setup and mobility-aware reward estimation logic.
+
+
+2. **Proposed Methodology (Benchmarked):**
+* **Paper:** *MGCO: Mobility-Aware Generative Computation Offloading in Edge-Cloud Systems*.
+* **Usage:** Adopted the **Seq2Seq** and **Feature Fusion** concepts. We integrated the Transformer's latent features into the decision-making process to enhance the agent's context awareness, as suggested by the generative offloading framework.
