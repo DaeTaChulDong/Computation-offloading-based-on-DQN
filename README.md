@@ -1,9 +1,3 @@
-제공해주신 실험 설계, 변경 이력, 그리고 최종 결과를 종합하여 **GitHub `README.md**` 형식으로 작성해 드립니다.
-
-이전에 요청하신 대로 **영어(English)**로 작성하였으며, 연구의 흐름(단순 예측 → 강화학습 결합 → 환경 고도화 → 검증 방식 개선)이 논리적으로 드러나도록 구성했습니다.
-
----
-
 # Mobility-Aware Computation Offloading in Vehicular Networks using Transformer and DRL
 
 This project implements a **Mobility-Aware Computation Offloading System** for vehicular edge computing (VEC) environments. It proposes a **Transformer-based mobility prediction model** integrated with a Deep Reinforcement Learning (DRL) agent to optimize task offloading decisions. The system is benchmarked against a traditional LSTM-based approach in a complex urban simulation.
