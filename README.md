@@ -98,7 +98,7 @@ python model_verify_performance.py
 ├── src/
 │   ├── data_collector.py           # Script for running SUMO and collecting data
 │   ├── train_fusion_models.py      # Main training script (Feature Fusion)
-│   ├── rl_fusion_penalty.py        # DRL experiment script (High penalty env)
+│   ├── RL_exp.py        # DRL experiment script (High penalty env)
 │   └── model_verify_performance.py # Precision Bonus verification script
 ├── README.md                       # Project documentation
 └── requirements.txt                # Python dependencies
